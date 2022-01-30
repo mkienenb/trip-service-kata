@@ -16,7 +16,7 @@ public class TripService {
         }
         List<Trip> tripList = new ArrayList<Trip>();
         if (user.isFriend(loggedUser)) {
-            tripList = findTripsByUser(user);
+            return findTripsByUser(user);
         }
         return tripList;
     }
