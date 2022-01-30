@@ -13,8 +13,7 @@ public class TripService {
         List<Trip> tripList = new ArrayList<Trip>();
         User loggedUser = getLoggedUser();
         if (loggedUser != null) {
-            boolean isFriend = user.isFriend(loggedUser);
-            if (isFriend) {
+            if (user.isFriend(loggedUser)) {
                 tripList = findTripsByUser(user);
             }
             return tripList;
