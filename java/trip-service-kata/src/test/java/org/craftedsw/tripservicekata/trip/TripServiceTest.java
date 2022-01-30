@@ -60,6 +60,7 @@ public class TripServiceTest {
         @DisplayName("returns no trips when session user is not a friend of the specified user")
         void returns_no_trips_when_session_user_is_not_a_friend_of_the_specified_user() {
             mockedSessionUser = sessionUser;
+            when(specifiedUser.isFriend(sessionUser)).thenReturn(false);
             when(specifiedUser.getFriends()).thenReturn(Collections.emptyList());
             List<Trip> trips = tripService.getTripsByUser(specifiedUser);
             assertThat(trips).isEmpty();
@@ -69,6 +70,7 @@ public class TripServiceTest {
         @DisplayName("returns three trips when session user is a friend of the specified user")
         void returns_three_trips_when_session_user_is_a_friend_of_the_specified_user() {
             mockedSessionUser = sessionUser;
+            when(specifiedUser.isFriend(sessionUser)).thenReturn(true);
             when(specifiedUser.getFriends()).thenReturn(Collections.singletonList(sessionUser));
             List<Trip> trips = tripService.getTripsByUser(specifiedUser);
             assertThat(trips).isEqualTo(tripListForSpecifiedUser);
