@@ -23,10 +23,10 @@ public class TripService {
         }
     }
 
-    private boolean isFriend(User user, User loggedUser) {
+    private boolean isFriend(User user, User potentialFriendUser) {
         boolean isFriend = false;
         for (User friend : user.getFriends()) {
-            if (friend.equals(loggedUser)) {
+            if (friend.equals(potentialFriendUser)) {
                 isFriend = true;
                 break;
             }
