@@ -11,3 +11,4 @@
 ## Testing issues
 - UserSession is singleton
 - TripDAO is a singleton
+- TripDAO methods are static
