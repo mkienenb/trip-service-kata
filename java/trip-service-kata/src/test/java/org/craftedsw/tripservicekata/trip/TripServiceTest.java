@@ -31,8 +31,15 @@ public class TripServiceTest {
 
         final User sessionUser = mock(User.class);
         final UserSessionProvider userSessionProviderMock = mock(UserSessionProvider.class);
+        final TripFinder tripFinderMock = mock(TripFinder.class);
 
         final TripService tripService = new TripService() {
+            @Override
+            TripFinder getTripFinder() {
+                when(tripFinderMock.findTripByUser(specifiedUser)).thenReturn(tripListForSpecifiedUser);
+                return tripFinderMock;
+            }
+
             @Override
             UserSessionProvider getUserSessionProvider() {
                 return userSessionProviderMock;
