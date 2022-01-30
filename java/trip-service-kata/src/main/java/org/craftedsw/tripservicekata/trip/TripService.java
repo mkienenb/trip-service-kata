@@ -10,8 +10,6 @@ import java.util.List;
 
 public class TripService {
 
-    private final TripFinder tripFinder = new TripFinder();
-
     public List<Trip> getTripsByUser(User user) throws UserNotLoggedInException {
         List<Trip> tripList = new ArrayList<Trip>();
         User loggedUser = getUserSessionProvider().getLoggedUser();
@@ -24,7 +22,7 @@ public class TripService {
                 }
             }
             if (isFriend) {
-                tripList = tripFinder.findTripByUser(user);
+                tripList = getTripFinder().findTripByUser(user);
             }
             return tripList;
         } else {
@@ -32,8 +30,8 @@ public class TripService {
         }
     }
 
-    private List<Trip> findTripByUser(User user) {
-        return tripFinder.findTripByUser(user);
+    TripFinder getTripFinder() {
+        return new TripFinder();
     }
 
     UserSessionProvider getUserSessionProvider() {
