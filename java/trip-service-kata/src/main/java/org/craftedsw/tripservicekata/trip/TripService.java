@@ -27,5 +27,4 @@ public class TripService {
     List<Trip> findTripsByUser(User user) {
         return TripDAO.findTripsByUser(user);
     }
-
 }
