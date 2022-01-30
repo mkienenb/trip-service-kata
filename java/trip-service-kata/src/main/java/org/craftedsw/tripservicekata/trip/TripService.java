@@ -14,10 +14,7 @@ public class TripService {
         if (loggedUser == null) {
             throw new UserNotLoggedInException();
         }
-        if (user.isFriend(loggedUser)) {
-            return findTripsByUser(user);
-        }
-        return Collections.emptyList();
+        return user.isFriend(loggedUser) ? findTripsByUser(user) : Collections.emptyList();
     }
 
     User getLoggedUser() {
