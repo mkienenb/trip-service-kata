@@ -20,8 +20,8 @@ import static org.mockito.Mockito.when;
 @DisplayName("A trip service")
 public class TripServiceTest {
     @Nested
-    @DisplayName("when called with a specific user with three trips")
-    class WhenCalledWithASpecificUserWithThreeTrips {
+    @DisplayName("when called with a specific user having three trips")
+    class WhenCalledWithASpecificUserHavingThreeTrips {
         final User specifiedUser = mock(User.class);
         final User sessionUser = mock(User.class);
         final Trip trip1 = mock(Trip.class);
@@ -52,8 +52,8 @@ public class TripServiceTest {
         }
 
         @Test
-        @DisplayName("returns specific trips when session user is a friend of the specified user")
-        void returns_specific_trips_when_session_user_is_a_friend_of_the_specified_user() {
+        @DisplayName("returns three trips when session user is a friend of the specified user")
+        void returns_three_trips_when_session_user_is_a_friend_of_the_specified_user() {
             when(specifiedUser.getFriends()).thenReturn(Collections.singletonList(sessionUser));
             List<Trip> trips = tripService.getTripsByUser(specifiedUser);
             assertThat(trips).isEqualTo(tripListForSpecifiedUser);
