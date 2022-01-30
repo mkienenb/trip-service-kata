@@ -3,6 +3,7 @@ package org.craftedsw.tripservicekata.trip;
 import org.craftedsw.tripservicekata.exception.UserNotLoggedInException;
 import org.craftedsw.tripservicekata.user.User;
 import org.craftedsw.tripservicekata.user.UserSession;
+import org.craftedsw.tripservicekata.user.UserSessionProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class TripService {
         }
     }
 
-	UserSession getUserSessionProvider() {
+	UserSessionProvider getUserSessionProvider() {
 		return UserSession.getInstance();
 	}
 
